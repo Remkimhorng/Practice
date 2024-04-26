@@ -1,0 +1,12 @@
+.icon-wrapper {
+  display: flex;
+  align-items: center;
+  gap: 1.5rem;
+  padding: 22px;
+  font-size: 18px;
+}
+
+h1 {
+  margin-bottom: 0;
+}
+

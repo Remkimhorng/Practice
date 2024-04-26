@@ -1,0 +1,56 @@
+<form #f="ngForm" (ngSubmit)="onSubmit(f)">
+    
+    <div align="center">
+        <h2 mat-dialog-title *ngIf="!menu.id">Add Menu</h2>
+        <h2 mat-dialog-title *ngIf="menu.id">Edit menu</h2>
+    </div>
+
+    <mat-divider></mat-divider>
+
+    <mat-dialog-content align="center">
+
+        <mat-form-field appearance="fill">
+            <mat-label>name</mat-label>
+            <input type="text" matInput name="shortName" required [(ngModel)]="menu.name" />
+        </mat-form-field>
+
+        <mat-form-field appearance="fill">
+            <mat-label>ingredient</mat-label>
+            <mat-select required [(ngModel)]="menu.ingredient" name="ingredient">
+                <mat-divider></mat-divider>
+                <mat-option *ngFor="let i of menuTemplate.ingredient" [value]="i.name">
+                    {{ i.name }}
+                </mat-option>
+            </mat-select>
+        </mat-form-field>
+
+        <mat-form-field appearance="fill">
+            <mat-label>Category</mat-label>
+            <mat-select required [(ngModel)]="menu.category" name="category">
+                <mat-divider></mat-divider>
+                <mat-option *ngFor="let i of menuTemplate.category" [value]="i.menu">
+                    {{ i.menu }}
+                </mat-option>
+            </mat-select>
+        </mat-form-field>
+
+
+        <mat-form-field appearance="fill">
+            <mat-label>Price</mat-label>
+            <input type="number" matInput name="price" [(ngModel)]="menu.price" />
+        </mat-form-field>
+
+        <mat-form-field appearance="fill">
+            <mat-label>Stock Out</mat-label>
+            <input type="number" matInput name="outStock" [(ngModel)]="menu.outStock" />
+        </mat-form-field>
+
+    </mat-dialog-content>
+
+    <mat-dialog-actions align="end">
+        <button mat-raised-button color="primary">save</button>
+        <a mat-raised-button color="warn" (click)="close()">close</a>
+    </mat-dialog-actions>
+    <mat-progress-bar [class.is__loading]="!loading" mode="indeterminate"></mat-progress-bar>
+
+</form>

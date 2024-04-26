@@ -1,0 +1,81 @@
+<section class="section">
+    <mat-slider
+    class="example-margin"
+    [disabled]="disabled"
+    [max]="4"
+    [min]="1"
+    [step]="step"
+    [discrete]="thumbLabel"
+    [showTickMarks]="showTicks">
+  <input matSliderThumb [(ngModel)]="value" #slider>
+</mat-slider>
+    <mat-grid-list [cols]="value" rowHeight="4:3" [gutterSize]="'17px'">
+        <mat-grid-tile>
+            
+            <mat-card class="dashboard-card">
+                <mat-card-title>
+                    <h1>{{'product' |transloco}}</h1>
+                </mat-card-title>
+                <mat-card-title-group class="center">
+                    <mat-icon>inventory_2</mat-icon>
+                    <mat-card-subtitle>
+                        <div>
+                            <h1>{{menuCount}}</h1>
+                        </div>
+                    </mat-card-subtitle>
+                </mat-card-title-group>
+            </mat-card>
+        </mat-grid-tile>
+
+        <mat-grid-tile>
+
+            <mat-card class="dashboard-card1">
+                <mat-card-title>
+                    <h1>{{'categories' | transloco}}</h1>
+                </mat-card-title>
+                <mat-card-title-group class="center">
+                    <mat-icon> production_quantity_limits </mat-icon>
+                    <mat-card-subtitle>
+                        <div>
+                            <h1>{{categoryCount}}</h1>
+                        </div>
+                    </mat-card-subtitle>
+                </mat-card-title-group>
+            </mat-card>
+        </mat-grid-tile>
+
+
+        <mat-grid-tile>
+            <mat-card class="dashboard-card2">
+                <mat-card-title>
+                    <h1>{{'table' | transloco}}</h1>
+                </mat-card-title>
+                <mat-card-title-group class="center">
+                    <mat-icon> table_restaurant</mat-icon>
+                    <mat-card-subtitle>
+                        <div>
+                            <h1>{{tableCount}}</h1>
+                        </div>
+                    </mat-card-subtitle>
+                </mat-card-title-group>
+            </mat-card>
+        </mat-grid-tile>
+
+
+        <mat-grid-tile>
+            <mat-card class="dashboard-card2">
+                <mat-card-title>
+                    <h1>{{'ingredient' | transloco}}</h1>
+                </mat-card-title>
+                <mat-card-title-group class="center">
+                    <mat-icon>restaurant_menu</mat-icon>
+                    <mat-card-subtitle>
+                        <div>
+                            <h1>{{ingredientCount}}</h1>
+                        </div>
+                    </mat-card-subtitle>
+                </mat-card-title-group>
+            </mat-card>
+        </mat-grid-tile>
+    </mat-grid-list>
+</section>

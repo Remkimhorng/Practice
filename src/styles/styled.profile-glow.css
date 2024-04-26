@@ -1,0 +1,121 @@
+:host {
+  --color-primary: #48AA40;
+  --color-secondary: #15A0BF;
+  --color-primary-light: #49aa40af;
+  --color-accent: #C6CA08;
+  --color-aaebf5a: #D5A644;
+  --color-warn: #BD2525;
+}
+
+.button {
+  cursor: pointer;
+  font-size: 2rem;
+  font-family: inherit;
+  font-weight: 700;
+  color: hsl(320, 40%, 40%);
+  background-color: hsl(349 100% 95%);
+  padding: 0.75em 1.25em;
+  border: 0;
+  border-radius: 1.25rem;
+}
+
+.glow-effect {
+  --glow-line-color: #48AA40;
+  --glow-line-thickness: 2px;
+  --glow-line-length: 20px;
+  --glow-blur-color: #49aa40af;
+  --glow-blur-size: 5px;
+  --glow-offset: 0px;
+  --animation-speed: 6000ms;
+  /* do not change, used for calculations */
+  --container-offset: 100px;
+  position: relative;
+}
+
+.glow-container {
+  pointer-events: none;
+  position: absolute;
+  inset: calc(var(--container-offset) / -2);
+  width: calc(100% + var(--container-offset));
+  height: calc(100% + var(--container-offset));
+  opacity: 0;
+  animation: glow-visibility ease-in-out calc( var(--animation-speed) * 2);
+  animation: glow-visibility calc( var(--animation-speed) / 2 ) infinite;
+}
+
+.glow-blur,
+.glow-line {
+  width: calc(100% - var(--container-offset) + var(--glow-offset));
+  height: calc(100% - var(--container-offset) + var(--glow-offset));
+  x: calc((var(--container-offset) / 2) + calc(var(--glow-offset) / -2));
+  y: calc((var(--container-offset) / 2) + calc(var(--glow-offset) / -2));
+  /* rx: 1.25rem; */
+  /* rx: 50%; */
+  fill: transparent;
+  stroke: black;
+  stroke-width: 5px;
+  /* stroke-dasharray: var(--glow-line-length) calc(50px - var(--glow-line-length)); */
+  /* stroke-dasharray: .5px .5px; */
+}
+
+.glow-line {
+  stroke: var(--glow-line-color);
+  stroke-width: var(--glow-line-thickness);
+}
+
+.glow-blur {
+  filter: blur(var(--glow-blur-size));
+  stroke: var(--glow-blur-color);
+  stroke-width: var(--glow-blur-size);
+}
+
+@keyframes glow-visibility {
+
+  0%,
+  100% {
+    opacity: 0;
+    stroke-dashoffset: 0px;
+  }
+
+  25%,
+  75% {
+    opacity: 1;
+    stroke-dashoffset: -80px;
+  }
+}
+
+.glow-effect[data-glow-animation="false"] {
+  --glow-line-length: 50px;
+}
+
+.glow-effect[data-glow-offset="true"] {
+  --glow-offset: 10px;
+}
+
+.inspiration {
+  position: absolute;
+  inset: auto 0 1.5rem;
+  margin-inline: auto;
+  text-align: center;
+  font-size: 0.925rem;
+  font-weight: 700;
+  opacity: 0.75;
+}
+
+
+img {
+  display: block;
+  max-width: 100%;
+}
+
+.avatar {
+  width: 18rem;
+  border-radius: 50%;
+  margin: auto;
+}
+
+.avatar img {
+  aspect-ratio: 1 / 1;
+  object-fit: cover;
+  border-radius: inherit;
+}

@@ -1,0 +1,38 @@
+<div class="content__flex">
+    <form action="">
+        <section class="section">
+            <mat-form-field class="btn-search">
+                <mat-label>{{'search' | transloco}}</mat-label>
+                <input type="text" matInput (keyup)="applyFilter($event)">
+                <mat-icon matSuffix>search</mat-icon>
+            </mat-form-field> 
+
+            <div class="button-search">
+                <button mat-raised-button color="primary" (click)="newDailog()">{{'add'|transloco}} {{'new' | transloco}}</button>
+            </div>
+
+        </section>
+    </form>
+    <div class="mat-elevation-z1 table content__flex__1">
+        <table>
+            <tr class="table-header">
+                <th>{{'no' | transloco}}</th>
+                <th>{{'ingredient' | transloco}}</th>
+                <th>{{'value'  | transloco}}</th>
+            </tr>
+            <tr *ngFor="let t of data">
+                <td>{{t.id}}</td>
+                <td>{{t.ingredient}}</td>
+                <td>{{t.value}} (kg)</td>
+                <button mat-icon-button (click)="updateDailog(t, true)"><mat-icon
+                        color="success">add_box</mat-icon></button>
+                <button mat-icon-button color="primary"
+                    (click)="updateDailog(t, false)"><mat-icon>remove_box</mat-icon></button>
+
+                <button mat-icon-button color="primary"
+                    (click)="deleteConfirm(t)"><mat-icon>delete_sweep</mat-icon></button>
+            </tr>
+        </table>
+    </div>
+
+</div>

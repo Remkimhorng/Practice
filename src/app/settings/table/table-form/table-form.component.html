@@ -1,0 +1,31 @@
+<form #f="ngForm" (ngSubmit)="onSubmit(f)">
+    <div align="center">
+
+    <h1 mat-dialog-title *ngIf="!data.id"> Add Table</h1>
+    <h1 mat-dialog-title *ngIf="data.id">Edit Table</h1>
+</div>
+
+    <mat-divider></mat-divider>
+    
+    <mat-dialog-content align="center">
+        <mat-form-field appearance="outline">
+              <mat-label >Floor</mat-label>
+              <input type="text"  matInput name="name" required [(ngModel)]="table.floor">
+          </mat-form-field>
+
+          <mat-form-field appearance="outline">
+              <mat-label >Table Number</mat-label>
+              <input type="text"  matInput name="value" [(ngModel)]="table.name">
+          </mat-form-field>
+          
+          <span class="error" *ngIf="isInteger">number-must-greater-than</span>
+          <br *ngIf="isInteger">
+          <span class="error" *ngIf="isInteger">must-not-decimal-number</span>
+      </mat-dialog-content>
+  
+      <mat-dialog-actions align="end">
+          <button mat-raised-button color="primary" >save</button>
+          <a mat-raised-button color="warn"   (click)="close()">close</a>
+      </mat-dialog-actions>
+  </form>
+  

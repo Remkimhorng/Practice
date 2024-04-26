@@ -1,0 +1,29 @@
+<form #f="ngForm" (ngSubmit)="onSubmit(f)">
+
+    <div align="center" style="color: black;">
+        <h1 mat-dialog-title *ngIf="!data.id"> Add Ingredient</h1>
+        <h1 mat-dialog-title *ngIf="data.id">Edit Ingredient</h1>
+    </div>
+
+    <mat-divider></mat-divider>
+
+    <mat-dialog-content align="center">
+
+        <mat-form-field appearance="fill">
+            <mat-label>Menu</mat-label>
+            <input type="text" matInput name="name" required [(ngModel)]="ingredient.name">
+        </mat-form-field>
+
+        <mat-form-field appearance="fill">
+            <mat-label>Value</mat-label>
+            <input type="text" matInput name="name" required [(ngModel)]="ingredient.value">
+        </mat-form-field>
+
+    </mat-dialog-content>
+
+    <mat-dialog-actions align="end">
+        <button mat-raised-button color="success">Save</button>
+        <button mat-raised-button color="warn" type="button" (click)="close()">Cancel</button>
+    </mat-dialog-actions>
+    <mat-progress-bar [class.is__loading]="!loading" mode="indeterminate"></mat-progress-bar>
+</form>

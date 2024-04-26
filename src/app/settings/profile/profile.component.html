@@ -1,0 +1,54 @@
+<div class="section">
+  <mat-card>
+    <mat-card-header class="mat-card-header-center">
+      <div class="hoverable">
+        <img class="user-photo" alt="profilePic" src="/assets/img/png/profile-icon.png" />
+        <img alt="profilePic" />
+        <div class="background"></div>
+      </div>
+      <div class="upload">
+        <div class="round">
+          <input type="file" required accept="image/png, image/gif, image/jpeg" (change)="fileChange($event)" />
+          <mat-icon>camera_alt</mat-icon>
+          <mat-icon>camera_alt</mat-icon>
+        </div>
+      </div>
+      <div class="change-password-link passwd-lg">
+        <a mat-button style="color: blue" (click)="OpencChangepassword()">{{
+          "change-password" | transloco
+          }}</a>
+      </div>
+    </mat-card-header>
+    <mat-divider></mat-divider>
+    <mat-card-content>
+      <form #f="ngForm" (ngSubmit)="onSubmit(f)">
+        <mat-form-field class="full-width-input">
+          <mat-label>{{ "name" | transloco }}</mat-label>
+          <input type="text" matInput name="fullName" required />
+        </mat-form-field>
+        <br />
+        <mat-form-field class="full-width-input">
+          <mat-label>{{ "email" | transloco }}</mat-label>
+          <input type="email" name="email" required matInput pattern="^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$" />
+        </mat-form-field>
+        <mat-form-field class="full-width-input">
+          <mat-label>{{ "gender" |transloco }}</mat-label>
+          <mat-select name="gender" required>
+            <mat-option value="male">{{ "male" | transloco}}</mat-option>
+            <mat-option value="female">{{ "female" | transloco}}</mat-option>
+          </mat-select>
+        </mat-form-field>
+        <div class="actions">
+          <button mat-raised-button color="success" class="action-button">
+            {{ "save" | transloco }}
+          </button>
+        </div>
+      </form>
+    </mat-card-content>
+    <div class="change-password-link passwd-sm">
+      <a mat-button style="color: blue">{{
+        "change-password"
+        }}</a>
+    </div>
+  </mat-card>
+</div>

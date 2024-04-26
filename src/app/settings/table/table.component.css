@@ -1,0 +1,28 @@
+.section{
+    display: flex;
+    gap: 1rem;
+  }
+  
+  .full-width-table {
+      width: 100%;
+  }
+  
+  table {
+      font-family: arial, sans-serif;
+      border-collapse: collapse;
+      width: 100%;
+    }
+    
+    td, th {
+      border: 1px solid #dddddd;
+      text-align: left;
+      padding: 8px;
+    }
+    
+    tr:nth-child(even) {
+      /* background-color: #dddddd; */
+    }
+  
+    .table-header{
+      position: sticky;
+    }

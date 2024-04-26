@@ -1,0 +1,117 @@
+<div class="content-sidebar">
+  <div class="content__flex table">
+    <section class="search section">
+      <div class="button">
+        <div class="btn-search">
+          <h1 class="h2">{{ "title" | transloco }}</h1>
+        </div>
+        <div class="button">
+          <button mat-fab extended color="succes">
+            <!-- <mat-icon>add</mat-icon> -->
+            {{ "first" | transloco }}{{ "floor" | transloco }}
+          </button>
+          <button mat-fab extended color="succes">
+            <!-- <mat-icon>add</mat-icon> -->
+            {{ "second" | transloco }}{{ "floor" | transloco }}
+          </button>
+        </div>
+      </div>
+      <div></div>
+    </section>
+    <div class="card-wrapper">
+      <div *ngFor="let t of table">
+        <!-- {{ selecteTtable.id === t.id }} -->
+        <!-- {{ t.isBusy }} -->
+        <mat-card
+          (click)="selectedTable(t)"
+          [class]="t.status"
+          [class.selected]="selecteTtable.id === t.id"
+        >
+          <div class="wrap-img">
+            <app-svg-table [status]="t.isBusy"> </app-svg-table>
+          </div>
+          <mat-card-content class="text">
+            <p>{{ t.floor }}</p>
+            <hr />
+            <p>{{ t.name }}</p>
+          </mat-card-content>
+        </mat-card>
+      </div>
+    </div>
+    <section class="search section">
+      <div class="button">
+        <div class="icon-wrapper">
+          <div>
+            <mat-icon style="height: 19px">person</mat-icon>
+            {{ "guess" | transloco }}
+          </div>
+          <div>
+            <mat-icon style="height: 19px">person</mat-icon>
+            {{ "table" | transloco }}
+          </div>
+        </div>
+        <div class="button" *ngIf="selecteTtable.id">
+          <button
+            (click)="onOrder(selecteTtable)"
+            mat-fab
+            extended
+            color="succes"
+          >
+            <mat-icon>add</mat-icon>
+            {{ "select and continue" | transloco }}
+          </button>
+        </div>
+      </div>
+      <div></div>
+    </section>
+  </div>
+  <div class="qr-template">
+    <mat-card class="recipe">
+      <div class="top-order">
+        <div class="order">
+          <h1>ORDER#</h1>
+        </div>
+        <div>
+          <div class="icon-wrapper">
+            <div>
+              <mat-icon style="height: 19px">person</mat-icon>
+              {{ "guess" | transloco }}
+            </div>
+            <div>
+              <mat-icon style="height: 19px">person</mat-icon>
+              {{ "table" | transloco }}
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <table>
+        <tr>
+          <th>Name</th>
+          <th>Unit</th>
+          <th>Price</th>
+          <th>Total</th>
+        </tr>
+        <tr *ngFor="let t of order">
+          <td>{{ t.name }}</td>
+          <td>{{ t.units }}</td>
+          <td>$ {{ t.price }}</td>
+          <td>$ {{ t.units * t.price }}</td>
+        </tr>
+
+        <br />
+        <tr>
+          <td colspan="1">Grand Total</td>
+          <td colspan="2">{{ grandUnits }}</td>
+          <td>${{ granTotal }}</td>
+        </tr>
+      </table>
+      <div class="button-row">
+        <button mat-button color="primary" (click)="onCheckOut()">
+          Check out
+        </button>
+        <!-- <button onclick="window.print()">Print this page</button> -->
+      </div>
+    </mat-card>
+  </div>
+</div>

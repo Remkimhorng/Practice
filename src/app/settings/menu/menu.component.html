@@ -1,0 +1,44 @@
+<div class="content__flex">
+  <form action="">
+
+  <section class="section">
+
+
+    <mat-form-field class="btn-search" appearance="fill">
+      <mat-label >{{'search' | transloco}}</mat-label>
+      <input type="text" matInput (keyup)="applyFilter($event)">
+      <mat-icon matSuffix>search</mat-icon>
+    </mat-form-field> &nbsp;
+    <div class="button-search">
+
+    <button mat-raised-button color="primary"  (click)="newDailog()">{{'add'|transloco}} {{'new' | transloco}}</button>
+  </div>
+
+  </section>
+</form>
+
+  <div class="mat-elevation-z1">
+    <table>
+      <tr>
+        <th>{{'no' | transloco}}</th>
+        <th>{{'menu'| transloco}}{{'name'| transloco}}</th>
+        <th>{{'category' | transloco}}</th>
+        <th>{{'stock-out'|transloco}}</th>
+        <th>{{'price'|transloco}}</th>
+        <th>{{'ingredient'| transloco}}</th>
+        
+      </tr>
+      <tr *ngFor="let t of data">
+        <td>{{t.id}}</td>
+        <td>{{t.name}}</td>
+        <td>{{t.category}}</td>
+        <td>{{t.outStock}}kg</td>
+        <td *ngIf="t.price">{{t.price}}$</td>
+        <td *ngIf="!t.price">0 $</td>
+        <td>{{t.ingredient}}</td>
+        <button  mat-icon-button   (click) ="updateDailog(t)"><mat-icon>create</mat-icon></button>
+        <button mat-icon-button  (click) ="deleteConfirm(t)"><mat-icon>delete_sweep</mat-icon></button>
+      </tr>
+    </table>
+  </div>
+</div>
